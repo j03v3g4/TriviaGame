@@ -48,9 +48,6 @@ window.onload = function() {
         intervalId = setInterval(decrement, 1000);
         // Hide button
         $("#start").hide();
-        // If timer expires
-                // End game
-                // Update and display score
     }
 
     // Stop function for end of game
@@ -61,7 +58,14 @@ window.onload = function() {
     // Decrement function
     function decrement() {
         time--;
-        $("#timer").text(time);
+        $("#timer").text(time + " seconds remaining...");
+        // If timer expires
+        if(time === 0) {
+            // End game
+            alert("Times Up!");
+            stop();
+            // Update and display score
+    }
     }
     
             
