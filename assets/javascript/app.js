@@ -1,6 +1,8 @@
-// Massive function to hold all of my script
-$(document).ready(function() {
-
+//Run code when page loads
+window.onload = function() {
+    // Enable start button
+    $("#start").on("click", start);
+}
 // Global Variables
     // Create an array of questions and their respective answers
     var questions = [
@@ -26,23 +28,48 @@ $(document).ready(function() {
         }
     ]
 
-    // Set initial start time
-    var time = 20
-
     // Score
     var rightAnswers = 0
     var wrongAnswers = 0
     var unanswered = 0
 
-    // Enable start button
+    // Timer
+    var time = 20;
+    var intervalId;
+    
+    // Reset function to restart the game
+    function reset() {
+        time = 20;
+        $("#timer").text(time + "seconds remaining...");
+    }
+
+    // Start function to begin the game
+    function start() {
+        intervalId = setInterval(decrement, 1000);
         // Hide button
-        // Start timer
-            // If timer expires
+        $("#start").hide();
+        // If timer expires
                 // End game
                 // Update and display score
+    }
+
+    // Stop function for end of game
+    function stop() {
+        clearInterval(intervalId);
+    }
+
+    // Decrement function
+    function decrement() {
+        time--;
+        $("#timer").text(time);
+    }
+    
+            
+                
         // Display questions
             // Buttons for answers
         // Enable submit button
+            // Hide button
+            // Stop timer
             // Update and display score on click
             // Display start button that resets the game
-});
